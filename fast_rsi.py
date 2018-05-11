@@ -68,7 +68,7 @@ def process():
     df['BODYS'] = abs(df['CLOSE']-df['OPEN'])
     df['BODYS_MEAN'] = df['BODYS'].rolling(10).mean()
     df['COLOR'] = df.apply(lambda x: 1 if x['CLOSE'] - x['OPEN'] > 0 else 0, axis=1)
-    df = smtrad.rsi(df, rsi_period=rsi_period)
+    df = smtrad.Indicator.rsi(df, rsi_period=rsi_period)
     return df
 
 print(process().tail())
